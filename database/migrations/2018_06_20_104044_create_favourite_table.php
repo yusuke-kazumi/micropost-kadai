@@ -16,13 +16,13 @@ class CreateFavouriteTable extends Migration
         Schema::create('favourite', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('micropost_id')->unsigned()->index();
+            $table->integer('favourite_id')->unsigned()->index();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('micropost_id')->references('id')->on('microposts')->onDelete('cascade');
+            $table->foreign('favourite_id')->references('id')->on('microposts')->onDelete('cascade');
         
-            $table->unique(['user_id', 'micropost_id']);
+            $table->unique(['user_id', 'favourite_id']);
             
         });
     }
