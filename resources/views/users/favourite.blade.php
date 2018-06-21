@@ -20,7 +20,9 @@
                 <li role="presentation" class="{{ Request::is('users/*/followers') ? 'active' : '' }}"><a href="{{ route('users.followers', ['id' => $user->id]) }}">Followers <span class="badge">{{ $count_followers }}</span></a></li>
                 <li role="presentation" class="{{ Request::is('users/*/favouriting') ? 'active' : '' }}"><a href="{{ route('users.favouriting', ['id' => $user->id]) }}">Favourites <span class="badge">{{ $count_favourite }}</span></a></li>
             </ul>
-            @include('users.users', ['users' => $users])
+            @if (count($favourite) > 0)
+                @include('microposts.microposts', ['microposts' => $favourite])
+            @endif
         </div>
     </div>
 @endsection

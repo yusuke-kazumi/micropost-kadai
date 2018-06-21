@@ -20,11 +20,11 @@ class MicropostsController extends Controller
                 'microposts' => $microposts,
             ];
         }
+        
         return view('welcome', $data);
     }
-
- 
-    public function store(Request $request)
+    
+public function store(Request $request)
     {
         $this->validate($request, [
             'content' => 'required|max:191',
